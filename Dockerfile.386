@@ -1,4 +1,4 @@
-FROM i386/alpine:3.12
+FROM 386/alpine:3.12
 MAINTAINER Oskar Joelsson
 ARG git_branch=master
 
