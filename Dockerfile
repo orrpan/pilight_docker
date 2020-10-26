@@ -44,7 +44,8 @@ RUN openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout pilight.key -out p
 
 WORKDIR /
 
-ENV CONFIG /etc/pilight/config
+VOLUME /etc/pilight
+EXPOSE 5001
 
 ENTRYPOINT ["/usr/local/sbin/pilight-daemon", "--foreground", "--config", "/etc/pilight/config.json" ]
 
