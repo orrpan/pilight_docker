@@ -25,7 +25,7 @@ RUN sed -i 's/__time_t/time_t/g; s/__suseconds_t/suseconds_t/g' src/wiringx.c \
  && mkdir build \
  && cd build \
  && cmake .. \
- && make \
+ && make --quiet \
  && make install
     
 WORKDIR /build/pilight
@@ -35,7 +35,7 @@ RUN sed -i 's/__time_t/time_t/g; s/__suseconds_t/suseconds_t/g' libs/pilight/cor
  && mkdir build \
  && cd build \
  && cmake .. \
- && make \
+ && make --quiet \
  && make install
 
 WORKDIR /build/pilight_pem
@@ -43,6 +43,26 @@ RUN openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout pilight.key -out p
  && cat pilight.key pilight.crt > /etc/pilight/pilight.pem
 
 WORKDIR /
+RUN rm -rf /build
+RUN apk --purge del \
+        git \
+        cmake \
+        g++ \
+        make \
+        linux-headers \
+        libpcap-dev \
+        mbedtls-dev \
+        lua5.1-dev \
+        luajit-dev \
+        libexecinfo-dev \
+        bsd-compat-headers \
+        openssl
+
+RUN apk --update add \
+        mbedtls \
+        luajit \
+        libpcap
+
 
 VOLUME /etc/pilight
 EXPOSE 5001
