@@ -47,5 +47,5 @@ WORKDIR /
 VOLUME /etc/pilight
 EXPOSE 5001
 
-ENTRYPOINT ["/usr/local/sbin/pilight-daemon", "--foreground", "--config", "/etc/pilight/config.json" ]
+CMD ["/usr/local/sbin/pilight-daemon", "--foreground", "--config", "/etc/pilight/config.json" ]
 
