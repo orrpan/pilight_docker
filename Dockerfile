@@ -14,7 +14,8 @@ RUN apk --update add \
         lua5.1-dev \
         luajit-dev \
         libexecinfo-dev \
-        bsd-compat-headers
+        bsd-compat-headers \
+        openssl
 
 RUN git clone https://github.com/wiringX/wiringX.git
 RUN git clone --depth 5 -b master https://www.github.com/pilight/pilight.git
@@ -37,13 +38,13 @@ RUN sed -i 's/__time_t/time_t/g; s/__suseconds_t/suseconds_t/g' libs/pilight/cor
  && make \
  && make install
 
+WORKDIR /build/pilight_pem
+RUN openssl req -x509 -newkey rsa:4096 -sha256 -nodes -keyout pilight.key -out pilight.crt -subj "/CN=pilight.org" -days 3650 \
+ && cat pilight.key pilight.crt > /etc/pilight/pilight.pem
+
 WORKDIR /
 
-ENV HOME /etc/pilight/config
-# RUN cd $HOME
+ENV CONFIG /etc/pilight/config
 
-# ENV AIRPLAY_NAME "Dockers"
+ENTRYPOINT ["/usr/local/sbin/pilight-daemon", "--foreground", "--config", "/etc/pilight/config.json" ]
 
-# ENTRYPOINT [ "bash" ]
-
-# ADD app /app
