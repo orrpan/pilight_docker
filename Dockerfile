@@ -30,8 +30,8 @@ RUN sed -i 's/__time_t/time_t/g; s/__suseconds_t/suseconds_t/g' src/wiringx.c \
     
 WORKDIR /build/pilight
 RUN sed -i 's/__time_t/time_t/g; s/__suseconds_t/suseconds_t/g' libs/pilight/core/arp.c \
- && ln -s /usr/lib/liblua.so /usr/lib/liblua5.1.so \
  && sed -i 's/#include <luajit-2.0/#include <luajit-2.1/g' libs/pilight/lua_c/lua.h \
+ && ln -s /usr/lib/liblua.so /usr/lib/liblua5.1.so \
  && mkdir build \
  && cd build \
  && cmake .. \
