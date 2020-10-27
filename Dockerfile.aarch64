@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM aarch64/alpine:3.12
 MAINTAINER Oskar Joelsson
 
 WORKDIR /build
