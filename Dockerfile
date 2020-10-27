@@ -1,5 +1,5 @@
 FROM alpine:3.12
-MAINTAINER Oskar Joelsson
+MAINTAINER orrpan
 ARG gitbranch=master
 
 WORKDIR /build
