@@ -1,5 +1,6 @@
 FROM alpine:3.12
 MAINTAINER Oskar Joelsson
+ARG gitbranch=master
 
 WORKDIR /build
 
@@ -18,7 +19,7 @@ RUN apk --update add \
         openssl
 
 RUN git clone https://github.com/wiringX/wiringX.git
-RUN git clone --depth 5 -b master https://www.github.com/pilight/pilight.git
+RUN git clone --depth 5 -b ${gitbranch} https://www.github.com/pilight/pilight.git
 
 WORKDIR /build/wiringX
 RUN sed -i 's/__time_t/time_t/g; s/__suseconds_t/suseconds_t/g' src/wiringx.c \
