@@ -1,4 +1,4 @@
-# pilight using docker
+# pilight using docker, alpine linux 3.12
 ## platforms:
 * linux/amd64
 * linux/arm/v6
