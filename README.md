@@ -18,12 +18,11 @@ services:
     hostname: pilight
     image: orrpan/pilight_docker:latest
     ports:
-      - '5003:5003'
       - '5001:5001'
     environment:
       - TZ=Europe/Stockholm
     volumes:
-      - 'home/`whoami`/.pilight/:/etc/pilight/'
+      - '/home/`whoami`/.pilight/:/etc/pilight/'
     restart: unless-stopped
     privileged: true
     devices:
