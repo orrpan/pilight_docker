@@ -61,6 +61,7 @@ RUN apk --purge del \
 
 RUN apk --update add \
         mbedtls \
+        lua5.1-libs \
         luajit \
         libpcap
 
