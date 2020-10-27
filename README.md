@@ -1,4 +1,10 @@
 # pilight using docker
+## platforms:
+* linux/386
+* linux/amd64
+* linux/arm/v6
+* linux/arm/v7
+* linux/arm64
 
 ## Run
 `docker run --rm -it -p 5001:5001 orrpan/pilight_docker:latest`
