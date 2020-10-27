@@ -1,6 +1,6 @@
 # pilight using docker, alpine linux 3.12
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/orrpan/pilight_docker/latest?style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/orrpan/pilight_docker/stable?style=for-the-badge)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/orrpan/pilight_docker/staging?style=for-the-badge)
 
