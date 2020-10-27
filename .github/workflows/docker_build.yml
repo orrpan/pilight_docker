@@ -64,4 +64,4 @@ jobs:
           build-args: |
             gitbranch=staging
           tags: |
-            orrpan/pilight_docker:latest
+            orrpan/pilight_docker:staging
