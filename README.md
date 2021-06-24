@@ -22,16 +22,21 @@ version: '3.3'
 services:
   pilight:
     container_name: pilight
-    hostname: pilight
     image: orrpan/pilight_docker:latest
     ports:
-      - '5001:5001'
+      - '5000-5003:5000-5003'
     environment:
       - TZ=Europe/Stockholm
     volumes:
-      - '/home/`whoami`/.pilight/:/etc/pilight/'
+      - '${HOME}/.pilight/:/etc/pilight/'
     restart: unless-stopped
     privileged: true
-    devices:
-        - /dev/ttyUSB0:/dev/ttyUSB0
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "sleep for 2sec"
+        sleep 2
+        /usr/local/sbin/pilight-daemon --foreground --config /etc/pilight/config.json
+
 ```
