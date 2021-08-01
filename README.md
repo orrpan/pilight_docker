@@ -31,6 +31,8 @@ services:
       - '${HOME}/.pilight/:/etc/pilight/'
     restart: unless-stopped
     privileged: true
+    #devices: # if you use usb
+    # - /dev/ttyUSB0:/dev/ttyUSB0
     command:
       - /bin/sh
       - -c
